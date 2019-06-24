@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Fragment } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+//1. 接受store中的数据的一个链接器
+import { connect } from "react-redux"
+
+class App extends Component {
+  
+  render() {
+    console.log(this.props);
+    return (
+       
+      <Fragment>
+        
+        数据：{this.props.num}
+        
+      </Fragment>
+
+
+
+    );
+  }
+}
+// 3.最终 store中的数据是通过属性props 的方式来传递参数
+// 4.创建一个数据映射对象
+const mapStateToProps = (state) => {
+  return {
+    num: state.fruitNums
+  }
 }
 
-export default App;
+
+// 2.讲store中的数据输入传递到app中
+export default connect(mapStateToProps, null)(App);
