@@ -17,5 +17,10 @@ const defaultState={
       newState.fruitNums += action.value;
       return newState;
     }
+    if(action.type==="num_substr"){
+     let newState=JSON.parse(JSON.stringify(state));
+    newState.fruitNums+=action.value
+    return newState
+    }
     return state;
   }
